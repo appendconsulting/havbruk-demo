@@ -117,6 +117,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
     <div class="progress-dot" id="dot0"></div>
     <div class="progress-dot" id="dot1"></div>
     <div class="progress-dot" id="dot2"></div>
+    <div class="progress-dot" id="dot3"></div>
     <span class="scenario-label" id="scenario-label">Laster...</span>
   </div>
 
@@ -132,7 +133,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
 let skipFlag = false;
 let activeCharts = [];
 let currentScenario = 0;
-const scenarios = [scenario1, scenario2, scenario3];
+const scenarios = [scenario1, scenario2, scenario3, scenario4];
 
 function delay(ms) {
   return new Promise(res => {
@@ -155,13 +156,13 @@ function setTopbar(title) {
 }
 
 function setDots(current) {
-  for (let i = 0; i < 3; i++) {
+  for (let i = 0; i < 4; i++) {
     const d = document.getElementById('dot' + i);
     d.classList.remove('active', 'done');
     if (i < current) d.classList.add('done');
     else if (i === current) d.classList.add('active');
   }
-  const labels = ['Scenario 1 av 3 — Oversikt', 'Scenario 2 av 3 — Sensorer', 'Scenario 3 av 3 — Fôring'];
+  const labels = ['Scenario 1 av 4 — Oversikt', 'Scenario 2 av 4 — Sensorer', 'Scenario 3 av 4 — Fôring', 'Scenario 4 av 4 — Rapporter'];
   document.getElementById('scenario-label').textContent = labels[current] || '';
 }
 
@@ -450,6 +451,107 @@ async function scenario3() {
     rows.map(r => '<tr><td>' + r[0] + '</td><td>' + r[1] + '</td><td>' + r[2] + '</td><td><span class="badge ' + r[4] + '">' + r[3] + '</span></td></tr>').join('') +
     '</tbody></table>';
   await revealEl(tbl);
+}
+
+// ---- SCENARIO 4 ----
+async function scenario4() {
+  skipFlag = false;
+  setNav('nav-rapporter');
+  setTopbar('Rapporter');
+  setDots(3);
+  clearContent();
+
+  // Report list
+  const introWrap = document.createElement('div');
+  introWrap.className = 'artifact';
+  introWrap.innerHTML = '<div class="section-title">Tilgjengelige rapporter</div>';
+  const reportList = document.createElement('div');
+  reportList.style.cssText = 'display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px;';
+  const reports = [
+    { icon: '📋', title: 'Ukesrapport uke 15', date: '14. april 2026', status: 'Ferdig', cls: 'ok' },
+    { icon: '🔬', title: 'Helsestatus – Q1 2026', date: '1. april 2026', status: 'Ferdig', cls: 'ok' },
+    { icon: '📦', title: 'Fôrforbruk mars 2026', date: '31. mars 2026', status: 'Ferdig', cls: 'ok' },
+    { icon: '⚠️', title: 'Avviksrapport Merd 5', date: '15. april 2026', status: 'Utkast', cls: 'warn' },
+  ];
+  reports.forEach(r => {
+    const card = document.createElement('div');
+    card.style.cssText = 'background:#fff;border-radius:12px;padding:16px 18px;box-shadow:0 1px 3px rgba(0,0,0,0.06);border:1px solid #e5e7eb;display:flex;gap:12px;align-items:flex-start;';
+    card.innerHTML = `<div style="font-size:22px;line-height:1">${r.icon}</div>
+      <div style="flex:1">
+        <div style="font-size:13px;font-weight:600;color:#111827;margin-bottom:3px">${r.title}</div>
+        <div style="font-size:12px;color:#6b7280;margin-bottom:6px">${r.date}</div>
+        <span class="badge ${r.cls}">${r.status}</span>
+      </div>
+      <div style="color:#6b7280;font-size:18px;align-self:center">↓</div>`;
+    reportList.appendChild(card);
+  });
+  introWrap.appendChild(reportList);
+  await revealEl(introWrap);
+  await delay(600);
+
+  // KPI summary for report
+  const kpiWrap = document.createElement('div');
+  kpiWrap.className = 'artifact';
+  kpiWrap.innerHTML = '<div class="section-title">Nøkkeltall — uke 15</div>';
+  const kpiGrid = document.createElement('div');
+  kpiGrid.className = 'kpi-grid';
+  kpiGrid.style.gridTemplateColumns = 'repeat(4,1fr)';
+  const kpis = [
+    { label: 'Slakteklar biomasse', val: 38, unit: 'tonn', decimals: false, cls: '' },
+    { label: 'Gjennomsnittsvekt', val: 4.7, unit: 'kg', decimals: true, cls: '' },
+    { label: 'Overlevelse', val: 98.2, unit: '%', decimals: true, cls: '' },
+    { label: 'Kostnad per kg', val: 32.4, unit: 'kr', decimals: true, cls: '' },
+  ];
+  kpis.forEach(k => {
+    const card = document.createElement('div');
+    card.className = 'kpi-card ' + k.cls;
+    card.innerHTML = '<div class="kpi-label">' + k.label + '</div><div class="kpi-value"><span class="kpi-num">0</span><span class="kpi-unit"> ' + k.unit + '</span></div>';
+    kpiGrid.appendChild(card);
+  });
+  kpiWrap.appendChild(kpiGrid);
+  await revealEl(kpiWrap);
+  await delay(200);
+  const nums = kpiWrap.querySelectorAll('.kpi-num');
+  await Promise.all([
+    animateCounter(nums[0], 0, 38, false),
+    animateCounter(nums[1], 0, 4.7, true),
+    animateCounter(nums[2], 0, 98.2, true),
+    animateCounter(nums[3], 0, 32.4, true),
+  ]);
+  await delay(600);
+
+  // Vekstutvikling chart
+  const chartCard = document.createElement('div');
+  chartCard.className = 'chart-card artifact';
+  chartCard.innerHTML = '<div class="chart-title">Gjennomsnittsvekt per merd — siste 8 uker (kg)</div><div class="chart-wrap"><canvas id="chart-vekst"></canvas></div>';
+  await revealEl(chartCard);
+  await delay(150);
+
+  const uker = ['Uke 8','Uke 9','Uke 10','Uke 11','Uke 12','Uke 13','Uke 14','Uke 15'];
+  const vektData = {
+    'Merd 1': [3.1,3.3,3.5,3.7,3.9,4.2,4.5,4.8],
+    'Merd 2': [2.9,3.1,3.2,3.4,3.6,3.8,4.1,4.4],
+    'Merd 3': [3.4,3.6,3.8,4.0,4.3,4.5,4.7,5.0],
+    'Merd 4': [2.8,3.0,3.1,3.3,3.5,3.7,4.0,4.2],
+  };
+  const vektColors = ['#1a73e8','#10b981','#f59e0b','#8b5cf6'];
+  const ctxV = document.getElementById('chart-vekst').getContext('2d');
+  const chartV = new Chart(ctxV, {
+    type: 'line',
+    data: {
+      labels: uker,
+      datasets: Object.entries(vektData).map(([name, data], i) => ({
+        label: name, data,
+        borderColor: vektColors[i],
+        backgroundColor: 'transparent',
+        borderWidth: 2,
+        pointRadius: 3,
+        tension: 0.3,
+      }))
+    },
+    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom', labels: { font: { size: 11 }, boxWidth: 12 } } }, scales: { y: { min: 2.5, ticks: { font: { size: 11 } } }, x: { ticks: { font: { size: 11 } } } } }
+  });
+  activeCharts.push(chartV);
 }
 
 async function runScenario(i) {
