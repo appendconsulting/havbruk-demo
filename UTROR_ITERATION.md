@@ -5,6 +5,7 @@
 - v2: `https://utror2.app.apnd.no` / Coolify app `llh957f1lcuos3jb3uv0kn2a` / Git branch `utror2` / commit `63bc212`.
 - v3: `https://utror3.app.apnd.no` / Coolify app `zkea2tf19wmu98aud2f6uc60` / Git branch `utror3` / incorporates Daniel feedback 2026-05-25: removed meta-solution wording, forecast horizons update actual data, more granular charting across dashboard/prognosis.
 - v4: `https://utror4.app.apnd.no` / Coolify app `inc7a8d8imeepn36sya5xba1` / Git branch `utror4` / commit `84755fe` / added critical-now prioritisation, clickable merd drill-down, clearer map data panel, richer simulated fish-pen camera overlays, and stricter mobile header/overflow handling.
+- v5: `https://utror5.app.apnd.no` / Coolify app `jwq6h3t94367px6qx9lzljit` / Git branch `utror5` / commit `91c46cf` / moved map/camera ahead of generic KPIs, added operational state strip, stronger critical alert hierarchy, KPI drill-down affordance, and selected-merd camera/data coupling.
 
 ## Standing quality bar
 - Use `frontend-design` skill every run.
@@ -30,3 +31,12 @@
 - Deploy: Coolify deployment `l22m69dwpvix0mglzux9pll4` reached `finished` at `2026-05-25T22:14:54Z`.
 - QA: verified live HTML contains `Utror ControlRoom v4`, `critical-strip`, `selectMerd`, `Pelletsretur 7,4 %`, and `noindex, nofollow, noarchive`; verified `robots.txt` still blocks all crawlers; captured live desktop/mobile screenshots. Mobile is materially better, but the next round should still reduce the first viewport height and make the nav/action row feel less cramped.
 - Next round should focus on: making the fish-pen camera respond to selected merd, adding visible hover/active affordance for KPI drill-down, and improving mobile hierarchy so “critical now + next action” is visible even earlier.
+
+### v5 — 2026-05-25 23:13 UTC
+- Latest version found before work: v4 (`utror4.app.apnd.no`, Coolify `inc7a8d8imeepn36sya5xba1`, branch `utror4`). Coolify also had v1/v2/v3; Git branches had `utror2`, `utror3`, `utror4`.
+- Reviewed v4 with desktop and mobile screenshots plus ledermøte notes. Relevant context: Append is exploring havbruk/fiskeri leads, including Emilsen Fisk needing simpler reporting and a maritime/havbruk event.
+- Strict v4 weaknesses: the title/meta chrome still competed with the critical issue; map/camera arrived too late after generic KPI cards; operational mode was not persistent enough; KPI cards looked informational but not clearly drillable; selected merd did not update camera HUD/data.
+- Built v5 on branch `utror5`: operational state strip, more severe critical-now treatment with threshold/time/trend, facility map + fish-camera moved before generic KPIs, clickable KPI affordance, and merd selection now updates camera label, visibility, pellet return, stress and density values.
+- Deploy: Coolify app `jwq6h3t94367px6qx9lzljit`, deployment `yk6of5xf0tg0104ijldtay5m` reached `finished` at `2026-05-25T23:12:45Z`.
+- QA: verified live HTML contains `Utror ControlRoom v5`, `ops-state`, `cameraMerd`, `Kritisk nå`, and `noindex, nofollow, noarchive`; verified `robots.txt` blocks all crawlers; browser-verified selected merd `B2` updates camera HUD/panel/pellet note; captured live desktop/mobile screenshots.
+- Next round should focus on: compressing mobile header/nav even further, removing duplicate CTAs between alert and “Neste beste handling”, simplifying map overlays into a clearer A2/B2 incident-focus mode, and possibly adding sticky mobile critical CTA.
