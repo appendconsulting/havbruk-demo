@@ -3,6 +3,7 @@
 ## Current published versions
 - v1: `https://utror.app.apnd.no` / Coolify app `rgt9frltczl5ejpmb57085qm` / Git branch `main`.
 - v2: `https://utror2.app.apnd.no` / Coolify app `llh957f1lcuos3jb3uv0kn2a` / Git branch `utror2` / commit `63bc212`.
+- v3: `https://utror3.app.apnd.no` / Coolify app pending / Git branch `utror3` / incorporates Daniel feedback 2026-05-25: removed meta-solution wording, forecast horizons update actual data, more granular charting across dashboard/prognosis.
 
 ## Standing quality bar
 - Use `frontend-design` skill every run.
