@@ -6,6 +6,7 @@
 - v3: `https://utror3.app.apnd.no` / Coolify app `zkea2tf19wmu98aud2f6uc60` / Git branch `utror3` / incorporates Daniel feedback 2026-05-25: removed meta-solution wording, forecast horizons update actual data, more granular charting across dashboard/prognosis.
 - v4: `https://utror4.app.apnd.no` / Coolify app `inc7a8d8imeepn36sya5xba1` / Git branch `utror4` / commit `84755fe` / added critical-now prioritisation, clickable merd drill-down, clearer map data panel, richer simulated fish-pen camera overlays, and stricter mobile header/overflow handling.
 - v5: `https://utror5.app.apnd.no` / Coolify app `jwq6h3t94367px6qx9lzljit` / Git branch `utror5` / commit `91c46cf` / moved map/camera ahead of generic KPIs, added operational state strip, stronger critical alert hierarchy, KPI drill-down affordance, and selected-merd camera/data coupling.
+- v6: `https://utror6.app.apnd.no` / Coolify app `mhbjdrok1sigrigafs1fw3ev` / Git branch `utror6` / commit `0256ceb` / added incident-focus anleggskart, clearer A2/B2 cause chain, ROV-route mode, deduplicated action sequence, and tighter mobile nav with sticky critical CTA.
 
 ## Standing quality bar
 - Use `frontend-design` skill every run.
@@ -40,3 +41,12 @@
 - Deploy: Coolify app `jwq6h3t94367px6qx9lzljit`, deployment `yk6of5xf0tg0104ijldtay5m` reached `finished` at `2026-05-25T23:12:45Z`.
 - QA: verified live HTML contains `Utror ControlRoom v5`, `ops-state`, `cameraMerd`, `Kritisk nå`, and `noindex, nofollow, noarchive`; verified `robots.txt` blocks all crawlers; browser-verified selected merd `B2` updates camera HUD/panel/pellet note; captured live desktop/mobile screenshots.
 - Next round should focus on: compressing mobile header/nav even further, removing duplicate CTAs between alert and “Neste beste handling”, simplifying map overlays into a clearer A2/B2 incident-focus mode, and possibly adding sticky mobile critical CTA.
+
+### v6 — 2026-05-26 00:11 UTC
+- Latest version found before work: v5 (`utror5.app.apnd.no`, Coolify `jwq6h3t94367px6qx9lzljit`, branch `utror5`). Coolify apps/domains and Git branches showed v1–v5, so next version is v6.
+- Reviewed v5 with desktop and mobile screenshots plus ledermøte notes. Relevant context remains simple reporting for Emilsen Fisk and havbruk/maritim leads; the demo should prioritize operator clarity over decorative dashboard density.
+- Strict v5 weaknesses: mobile nav still showed horizontal overflow/chrome before substance; map was improved but still not enough of an incident-focus operational view; duplicate CTAs competed between critical alert and next-best-action; A2/B2 cause chain was not explicit enough; critical action was not sticky on mobile once the user scrolled into map/camera.
+- Built v6 on branch `utror6`: compact 4-item mobile nav, hidden mobile intro copy, incident-focus map default that de-emphasizes non-affected cages, explicit “lav strøm → oksygenfall → fôr ned” cause chain, ROV-route focus mode, deduplicated next-best-action into a 3-step sequence, and sticky mobile critical CTA.
+- Deploy: Coolify app `mhbjdrok1sigrigafs1fw3ev`, deployment `y31ievq4s4z653t49y4cwyme` reached `finished` at `2026-05-26T00:10:44Z`.
+- QA: verified live HTML contains `Utror ControlRoom v6`, `incident-focus`, `mobile-cta`, `Start tiltak`, and `noindex, nofollow, noarchive`; verified `robots.txt` blocks all crawlers; browser-verified desktop and mobile views; browser-evaluated ROV focus + `B2` selection updates focus state, panel, and camera HUD.
+- Next round should focus on: improving the tablet breakpoint around 1024px (rail consumes too much height before content), reducing hero/header height on desktop, making the canvas fish camera visually reflect selected A2 vs B2 more clearly, and adding a small “leader summary” view that answers Emilsen-style simple reporting needs without making the control room busier.
