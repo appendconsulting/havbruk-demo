@@ -7,6 +7,7 @@
 - v4: `https://utror4.app.apnd.no` / Coolify app `inc7a8d8imeepn36sya5xba1` / Git branch `utror4` / commit `84755fe` / added critical-now prioritisation, clickable merd drill-down, clearer map data panel, richer simulated fish-pen camera overlays, and stricter mobile header/overflow handling.
 - v5: `https://utror5.app.apnd.no` / Coolify app `jwq6h3t94367px6qx9lzljit` / Git branch `utror5` / commit `91c46cf` / moved map/camera ahead of generic KPIs, added operational state strip, stronger critical alert hierarchy, KPI drill-down affordance, and selected-merd camera/data coupling.
 - v6: `https://utror6.app.apnd.no` / Coolify app `mhbjdrok1sigrigafs1fw3ev` / Git branch `utror6` / commit `0256ceb` / added incident-focus anleggskart, clearer A2/B2 cause chain, ROV-route mode, deduplicated action sequence, and tighter mobile nav with sticky critical CTA.
+- v7: `https://utror7.app.apnd.no` / Coolify app `r129qh46ibc51plw5mkmlj7h` / Git branch `utror7` / commit `23a588c` / added leader-summary reporting, reduced desktop/tablet chrome, improved first-screen map+camera composition, and made fish-camera rendering react visually to selected merd.
 
 ## Standing quality bar
 - Use `frontend-design` skill every run.
@@ -50,3 +51,11 @@
 - Deploy: Coolify app `mhbjdrok1sigrigafs1fw3ev`, deployment `y31ievq4s4z653t49y4cwyme` reached `finished` at `2026-05-26T00:10:44Z`.
 - QA: verified live HTML contains `Utror ControlRoom v6`, `incident-focus`, `mobile-cta`, `Start tiltak`, and `noindex, nofollow, noarchive`; verified `robots.txt` blocks all crawlers; browser-verified desktop and mobile views; browser-evaluated ROV focus + `B2` selection updates focus state, panel, and camera HUD.
 - Next round should focus on: improving the tablet breakpoint around 1024px (rail consumes too much height before content), reducing hero/header height on desktop, making the canvas fish camera visually reflect selected A2 vs B2 more clearly, and adding a small “leader summary” view that answers Emilsen-style simple reporting needs without making the control room busier.
+
+### v7 — 2026-05-26 01:13 UTC
+- Latest version found before work: v6 (`utror6.app.apnd.no`, Coolify `mhbjdrok1sigrigafs1fw3ev`, branch `utror6`). Coolify apps/domains and Git branches showed v1–v6, so next version was v7.
+- Reviewed v6 desktop/mobile via browser. Strict v6 weaknesses: tablet/desktop chrome still consumed too much vertical attention; mobile rail was 129 px before useful content; map was strong but camera still arrived too late; selected A2/B2 changed labels but did not feel visually different enough in the simulated fish-pen feed; leader-reporting was hidden in a separate page rather than visible as a simple operational summary.
+- Built v7 on branch `utror7`: shorter desktop/tablet header, compact tablet rail, mobile rail reduced to 78 px, desktop first-screen composition now shows map and fish-camera together, added “Lederrapport på 15 sek” summary tiles for Emilsen-style simple reporting, expanded the report page into four concise executive tiles, and made the canvas camera tint/cluster/annotation change for A2 vs B2 vs normal merder.
+- Deploy: Coolify app `r129qh46ibc51plw5mkmlj7h`, final deployment `x2ksd745zssnj7q6xi3h7yol` reached `finished` at `2026-05-26T01:12:54Z`.
+- QA: verified live HTML contains `Utror ControlRoom v7`, `leader-summary`, `cameraBadge`, and `noindex, nofollow, noarchive`; verified `robots.txt` blocks all crawlers; browser-verified desktop/mobile dimensions and no horizontal overflow; browser-evaluated `B2` selection updates camera HUD, camera badge, panel and simulated camera context.
+- Next round should focus on: making the live fish-camera even more credible visually (net geometry/depth/parallax), improving the map at very narrow widths so the panel does not cover too much of the cage field, and considering a one-click copy/export for the leader summary without adding clutter.
