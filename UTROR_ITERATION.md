@@ -112,5 +112,5 @@
 ### final / utrordata — 2026-05-26 06:54 UTC
 - Hourly cron `Utror hourly design iteration` was cancelled on Daniel's request. Existing version apps v2–v12 were left untouched.
 - Built final public version on branch `utrordata-final`: all SVG/heat/bar diagrams get point/cell tooltips on hover/tap, the front page now has two larger axis-labelled decision graphs (`frontOxygenChart`, `frontOpsChart`), and tooltip/mobile overflow was corrected so hidden UI does not create layout overlap.
-- Published to `https://utrordata.app.apnd.no` as Coolify app `u654951s9z8ldklv1mok77fq`; final deployment `wksdgg0xlnfog947ifie9mv0` reached `finished` at `2026-05-26T06:55:19Z` on commit `4faf122`.
+- Published to `https://utrordata.app.apnd.no` as Coolify app `u654951s9z8ldklv1mok77fq`; final deployment `wksdgg0xlnfog947ifie9mv0` reached `finished` at `2026-05-26T06:55:19Z` on UI code commit `9e07f60`; latest iteration log commit `d18eb39`.
 - QA: verified live HTML contains `Utror ControlRoom final`, `frontOxygenChart`, `diagram-tip`, `noindex, nofollow, noarchive`; verified `robots.txt` blocks crawlers; browser-verified desktop and 390px mobile have no horizontal overflow, front charts render with axes/points, and tapping a front chart point shows the correct tooltip.
