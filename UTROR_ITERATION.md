@@ -108,3 +108,9 @@
 - Deploy: Coolify app `zun2qpnrhjfleixyew61anmt`, deployment `ctblx6fd7qix6ns8nf3640bo` reached `finished` at `2026-05-26T06:10:21Z` on commit `384b67d`.
 - QA: verified live HTML contains `Utror ControlRoom v12`, `verify-due`, and `noindex, nofollow, noarchive`; verified `robots.txt` blocks all crawlers; browser-verified mobile no horizontal overflow with rail 76 px and live camera y=485; browser-evaluated `B2` selection + `Start tiltakssekvens` updates camera badge, panel, receipt, stepper and next-verification time. App status later reported `running:unknown` after successful deploy and live 200 response.
 - Next round should focus on: desktop first-screen hierarchy after receipt appears (map/camera can be pushed down), making the manual verification cue visible on desktop without adding clutter, and making the anleggskart richer only if map/camera vertical priority is preserved.
+
+### final / utrordata — 2026-05-26 06:54 UTC
+- Hourly cron `Utror hourly design iteration` was cancelled on Daniel's request. Existing version apps v2–v12 were left untouched.
+- Built final public version on branch `utrordata-final`: all SVG/heat/bar diagrams get point/cell tooltips on hover/tap, the front page now has two larger axis-labelled decision graphs (`frontOxygenChart`, `frontOpsChart`), and tooltip/mobile overflow was corrected so hidden UI does not create layout overlap.
+- Published to `https://utrordata.app.apnd.no` as Coolify app `u654951s9z8ldklv1mok77fq`; final deployment `e3g43alr54n3bvcgmr4ypqxy` reached `finished` at `2026-05-26T06:53:42Z` on commit `9e07f60`.
+- QA: verified live HTML contains `Utror ControlRoom final`, `frontOxygenChart`, `diagram-tip`, `noindex, nofollow, noarchive`; verified `robots.txt` blocks crawlers; browser-verified desktop and 390px mobile have no horizontal overflow, front charts render with axes/points, and tapping a front chart point shows the correct tooltip.
