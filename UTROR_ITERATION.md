@@ -8,6 +8,7 @@
 - v5: `https://utror5.app.apnd.no` / Coolify app `jwq6h3t94367px6qx9lzljit` / Git branch `utror5` / commit `91c46cf` / moved map/camera ahead of generic KPIs, added operational state strip, stronger critical alert hierarchy, KPI drill-down affordance, and selected-merd camera/data coupling.
 - v6: `https://utror6.app.apnd.no` / Coolify app `mhbjdrok1sigrigafs1fw3ev` / Git branch `utror6` / commit `0256ceb` / added incident-focus anleggskart, clearer A2/B2 cause chain, ROV-route mode, deduplicated action sequence, and tighter mobile nav with sticky critical CTA.
 - v7: `https://utror7.app.apnd.no` / Coolify app `r129qh46ibc51plw5mkmlj7h` / Git branch `utror7` / commit `c95b267` (UI code `23a588c`) / added leader-summary reporting, reduced desktop/tablet chrome, improved first-screen map+camera composition, and made fish-camera rendering react visually to selected merd.
+- v8: `https://utror8.app.apnd.no` / Coolify app `lh1cq3wqk00jpx4d9bmwx0zc` / Git branch `utror8` / commit `73ed4fe` / fixed mobile rail overflow, made narrow map panel less obstructive, improved fish-camera net/depth/parallax realism, and added one-click leader-summary copy.
 
 ## Standing quality bar
 - Use `frontend-design` skill every run.
@@ -59,3 +60,11 @@
 - Deploy: Coolify app `r129qh46ibc51plw5mkmlj7h`, final verified deployment `qy2vsk70anncwo7x3nbqng00` reached `finished` at `2026-05-26T01:19:32Z` on commit `e0cd9c9` (UI code commit `23a588c`).
 - QA: verified live HTML contains `Utror ControlRoom v7`, `leader-summary`, `cameraBadge`, and `noindex, nofollow, noarchive`; verified `robots.txt` blocks all crawlers; browser-verified desktop/mobile dimensions and no horizontal overflow; browser-evaluated `B2` selection updates camera HUD, camera badge, panel and simulated camera context.
 - Next round should focus on: making the live fish-camera even more credible visually (net geometry/depth/parallax), improving the map at very narrow widths so the panel does not cover too much of the cage field, and considering a one-click copy/export for the leader summary without adding clutter.
+
+### v8 — 2026-05-26 02:12 UTC
+- Latest version found before work: v7 (`utror7.app.apnd.no`, Coolify `r129qh46ibc51plw5mkmlj7h`, branch `utror7`). Coolify apps/domains and Git branches showed v1–v7, so next version was v8.
+- Reviewed v7 desktop/mobile via browser plus memory and ledermøte notes. Strict v7 weaknesses: mobile nav still clipped on narrow width, the mobile map panel covered too much cage field, the simulated fish camera needed stronger net/depth/parallax cues to feel like a real merd, and the leader summary was readable but not easy to export/copy.
+- Built v8 on branch `utror8`: mobile rail is single-column with all nav items visible and no horizontal overflow, mobile map panel is compact and shifted out of the cage center, fish camera now has curved net geometry/depth rings/current shimmer, and leader report/summary can be copied as a 3-point status.
+- Deploy: Coolify app `lh1cq3wqk00jpx4d9bmwx0zc`, deployment `g5ep9mbvc1d0hrdhejnb4d1b` reached `finished` at `2026-05-26T02:09:34Z` on commit `73ed4fe`.
+- QA: verified live HTML contains `Utror ControlRoom v8`, `copyLeaderSummary`, `net-depth`, and `noindex, nofollow, noarchive`; verified `robots.txt` blocks all crawlers; browser-verified desktop/mobile views, no horizontal overflow, `B2` selection updates camera HUD/panel, and copy action runs.
+- Next round should focus on: making the map panel even smarter on narrow screens (collapsible or bottom sheet), reducing first-screen height before map/camera, and adding richer operational feedback after copying or executing leader-summary actions without adding clutter.
