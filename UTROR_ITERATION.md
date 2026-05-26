@@ -9,6 +9,7 @@
 - v6: `https://utror6.app.apnd.no` / Coolify app `mhbjdrok1sigrigafs1fw3ev` / Git branch `utror6` / commit `0256ceb` / added incident-focus anleggskart, clearer A2/B2 cause chain, ROV-route mode, deduplicated action sequence, and tighter mobile nav with sticky critical CTA.
 - v7: `https://utror7.app.apnd.no` / Coolify app `r129qh46ibc51plw5mkmlj7h` / Git branch `utror7` / commit `c95b267` (UI code `23a588c`) / added leader-summary reporting, reduced desktop/tablet chrome, improved first-screen map+camera composition, and made fish-camera rendering react visually to selected merd.
 - v8: `https://utror8.app.apnd.no` / Coolify app `lh1cq3wqk00jpx4d9bmwx0zc` / Git branch `utror8` / commit `73ed4fe` / fixed mobile rail overflow, made narrow map panel less obstructive, improved fish-camera net/depth/parallax realism, and added one-click leader-summary copy.
+- v9: `https://utror9.app.apnd.no` / Coolify app `ggtn7s7uo1r02y1serrruaml` / Git branch `utror9` / commit `fd652ab` / brought map and live fish-camera higher on desktop, compressed mobile first screen, turned mobile map detail into a collapsible bottom sheet, and added visible action/copy receipts.
 
 ## Standing quality bar
 - Use `frontend-design` skill every run.
@@ -68,3 +69,13 @@
 - Deploy: Coolify app `lh1cq3wqk00jpx4d9bmwx0zc`, deployment `g5ep9mbvc1d0hrdhejnb4d1b` reached `finished` at `2026-05-26T02:09:34Z` on commit `73ed4fe`.
 - QA: verified live HTML contains `Utror ControlRoom v8`, `copyLeaderSummary`, `net-depth`, and `noindex, nofollow, noarchive`; verified `robots.txt` blocks all crawlers; browser-verified desktop/mobile views, no horizontal overflow, `B2` selection updates camera HUD/panel, and copy action runs.
 - Next round should focus on: making the map panel even smarter on narrow screens (collapsible or bottom sheet), reducing first-screen height before map/camera, and adding richer operational feedback after copying or executing leader-summary actions without adding clutter.
+
+### v9 — 2026-05-26 03:12 UTC
+- Latest version found before work: v8 (`utror8.app.apnd.no`, Coolify `lh1cq3wqk00jpx4d9bmwx0zc`, branch `utror8`). Coolify apps/domains and Git branches showed v1–v8, so next version was v9.
+- Reviewed v8 desktop/mobile via browser metrics plus memory and ledermøte notes. Relevant context remains Emilsen Fisk/simple reporting and havbruk/maritim leads.
+- Strict v8 weaknesses: desktop still pushed the live fish-camera too low and gave the map a narrow field; mobile still spent ~705 px before the map, the critical card was too tall, and the mobile map panel still covered operational cage context. Copy/execute interactions were acknowledged only by transient toast, not persistent enough for operator confidence.
+- Built v9 on branch `utror9`: widened the desktop operational surface, reordered live fish-camera above oxygen details, compressed mobile rail/top/ops/critical blocks so map appears around 399 px, converted the mobile map panel to a tap-to-expand bottom sheet, and added persistent action receipts after fôr/ROV/storm/resolve/copy actions.
+- Deploy: Coolify app `ggtn7s7uo1r02y1serrruaml`, deployment `f5zj79wp9l74us9hkuodwfog` reached `finished` at `2026-05-26T03:10:42Z` on commit `fd652ab`.
+- QA: verified live HTML contains `Utror ControlRoom v9`, `actionReceipt`, `togglePanel`, and `noindex, nofollow, noarchive`; verified `robots.txt` blocks all crawlers; browser-verified desktop/mobile dimensions, no horizontal overflow in mobile, B2 selection updates camera/panel, collapsible panel expands, and `Start tiltak` produces persistent receipt + updated prognosis tag.
+- Next round should focus on: reducing desktop leader-summary height or turning it into a denser status strip so map/camera start even closer to the top, improving visual differentiation in the simulated fish camera beyond labels/tint, and making the anleggskart more geographically credible without clutter.
+
